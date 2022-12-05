@@ -1,5 +1,5 @@
 <template>
   <div>
-    NOT FOUND 404
+    LOGIN PAGE
   </div>
 </template>

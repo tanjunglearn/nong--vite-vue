@@ -1,12 +1,24 @@
 import { createRouter, createMemoryHistory } from "vue-router"
-import Hello from "../components/HelloWorld.vue"
-import NotFound from "../components/NotFound.vue"
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createMemoryHistory('/'),
   routes: [
-    { path: '/', name: 'Hello', component: Hello },
-    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+    {
+      name: 'Home',
+      path: '/',
+      alias: '/home',
+      component: () => import('../features/home/Home.vue')
+    },
+    {
+      name: 'Login',
+      path: '/login',
+      component: () => import('../features/login/Login.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('../features/not-found/NotFound.vue')
+    },
   ]
 })
 
