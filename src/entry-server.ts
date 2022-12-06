@@ -16,6 +16,8 @@ export function render(url: string) {
       const ctx = {}
       const html = await renderToString(app, ctx)
 
+      console.log('anu 2', html)
+
       resolve({html})
     })
   })

@@ -1,5 +1,6 @@
 import { createSSRApp, createApp as createClientApp } from 'vue'
 import router from './router'
+import { createMetaManager } from 'vue-meta'
 import App from './App.vue'
 
 // SSR requires a fresh app instance per request, therefore we export a function
@@ -12,6 +13,7 @@ export function createApp() {
   const app = isServer ? createSSRApp(App) : createClientApp(App)
 
   app.use(router)
+  app.use(createMetaManager())
 
   return { app, router }
 }
