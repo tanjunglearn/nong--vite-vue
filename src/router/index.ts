@@ -1,13 +1,29 @@
-import { createRouter, createMemoryHistory } from "vue-router"
-import Hello from "../components/HelloWorld.vue"
-import NotFound from "../components/NotFound.vue"
+import { createRouter, createMemoryHistory, createWebHistory } from "vue-router"
 
-const router = createRouter({
-  history: createMemoryHistory(),
-  routes: [
-    { path: '/', name: 'Hello', component: Hello },
-    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
-  ]
-})
+const isServer = typeof window === 'undefined'
+const history = isServer ? createMemoryHistory() : createWebHistory()
+const metaArea = {layout: 'area'}
+const metaNotFound = {layout: 'not-found'}
+const routes = [
+  {
+    name: 'Home',
+    path: '/',
+    alias: '/home',
+    meta: metaArea,
+    component: () => import('../features/home/Home.vue')
+  },
+  {
+    name: 'Login',
+    path: '/login',
+    meta: metaArea,
+    component: () => import('../features/login/Login.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    meta: metaNotFound,
+    component: () => import('../features/not-found/NotFound.vue')
+  },
+]
 
-export default router
+export default createRouter({history, routes})
