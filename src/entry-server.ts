@@ -14,7 +14,7 @@ export async function render(url: string) {
 
   const ctx = {}
   const html = await renderToString(app, ctx)
-  const head = (ctx.teleports && ctx.teleports.head) ? ctx.teleports.head : ''
+  const head = (ctx.head && ctx.head.length) ? ctx.head.join('\n') : ''
 
   return { head, html }
 }

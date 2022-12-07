@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Seo from './Seo.vue'
 import LayoutAreaVue from './layouts/layout-area/LayoutArea.vue'
 import LayoutNotFound from './layouts/layout-not-found/LayoutNotFound.vue'
 import { useSSRContext } from 'vue'
@@ -8,11 +7,13 @@ import { useSSRContext } from 'vue'
 // https://vitejs.dev/guide/ssr.html#conditional-logic
 if (import.meta.env.SSR) {
   const ctx = useSSRContext()
-  // ...attach properties to the context
 
-  ctx.teleports = {
-    'head': `<title>anu</title>`
-  }
+  ctx.head = [
+    `<title>NONG</title>`,
+    '<meta name="description" content="Free Web tutorials">',
+    '<meta name="keywords" content="HTML, CSS, JavaScript">',
+    '<meta name="author" content="John Doe">'
+  ]
 }
 </script>
 
