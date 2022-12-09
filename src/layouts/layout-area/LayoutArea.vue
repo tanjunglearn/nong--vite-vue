@@ -1,5 +1,9 @@
+<script setup lang="ts">
+import LayoutHeader from './LayoutHeader.vue';
+</script>
+
 <template>
-  <header>HEADER</header>
+  <LayoutHeader></LayoutHeader>
   <aside>SIDEBAR</aside>
   <main>
     <slot />

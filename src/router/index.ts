@@ -15,7 +15,7 @@ const routes = [
   {
     name: 'Login',
     path: '/login',
-    meta: metaArea,
+    meta: metaNotFound,
     component: () => import('../features/login/Login.vue')
   },
   {
